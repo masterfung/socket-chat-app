@@ -1,0 +1,24 @@
+.room-detail-header {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  padding: 5px 10px;
+  height: 45px;
+  border-bottom: 2px solid lightgray;
+  position: fixed;
+  background: white;
+  z-index: 1000;
+  width: 75%;
+}
+
+.room-title {
+  text-transform: capitalize;
+}
+
+.return-home {
+  line-height: 40px;
+  font-size: 20px;
+}
+
+.right-container {
+  text-align: right;
+}

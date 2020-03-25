@@ -1,0 +1,39 @@
+.join {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  height: 100vh;
+  align-items: center;
+}
+
+.join-inner-container {
+  border: 1px solid rgb(218, 218, 218);
+  padding: 30px;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.join-inputs > * {
+  display: block;
+}
+
+.join-inputs > span {
+  margin: 10px 0;
+}
+
+.join .icon {
+  font-size: 60px;
+  text-align: center;
+}
+
+.helper-text {
+  text-align: center;
+}
+
+.title-heading {
+  text-align: center;
+}
+
+.join-submit {
+  width: 100%;
+}

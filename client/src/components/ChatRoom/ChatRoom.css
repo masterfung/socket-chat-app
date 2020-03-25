@@ -1,0 +1,20 @@
+.chat-container {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  height: 100vh;
+}
+
+.room-details {
+  border-right: 1px solid lightgray;
+  padding: 5px 0;
+  height: 100vh;
+}
+
+.messages-container {
+  height: 91vh;
+}
+
+.error-msg-title {
+  color: red;
+  text-transform: uppercase;
+}

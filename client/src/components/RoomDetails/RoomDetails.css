@@ -1,0 +1,9 @@
+.room-inner-container {
+  padding-left: 10px;
+  height: 350px;
+  overflow: scroll;
+}
+
+.username {
+  padding-left: 10px;
+}
