@@ -20,6 +20,7 @@ const ChatRoom = ({
   const [users, setUsers] = useState('');
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
+  const [image, setImage] = useState(null);
 
   useEffect(() => {
     const { name, room } = queryString.parse(search);
@@ -56,6 +57,14 @@ const ChatRoom = ({
     }
   }, [messages]);
 
+  useEffect(() => {
+    socket.emit('image-upload', {image, room, name});
+    socket.on('image', (image) => {
+      console.log('image received from socket', image);
+      setImage(image);
+    })
+  }, [image]);
+
   const sendMessage = (e) => {
     e.preventDefault();
 
@@ -82,9 +91,11 @@ const ChatRoom = ({
           <Messages
             messages={messages}
             name={name}
+            image={image}
           />
           <InputTextField
             message={message}
+            setImage={setImage}
             sendMessage={sendMessage}
             setMessage={setMessage}
           />

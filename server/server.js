@@ -58,8 +58,12 @@ io.on('connect', (socket) => {
     } else {
       console.log('An error has occurred with sending message.');
     }
+  });
 
+  socket.on('image-upload', (image) => {
+    const user = getUser(socket.id);
 
+    io.to(user.room).emit('image', image);
   });
 
   socket.on('disconnect', () => {
