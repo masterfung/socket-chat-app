@@ -29,11 +29,13 @@ io.on('connect', (socket) => {
     socket.emit('message', {
       user: 'system',
       msg: `Let's welcome ${user.name} to the room ${user.room}. ✨✨`,
+      time: new Date(),
     });
 
     socket.broadcast.to(user.room).emit('message', {
       user: 'system',
       msg: `${user.name} has joined! 👏`,
+      time: new Date(),
     });
 
     io.to(user.room).emit('room-detail', {
@@ -44,15 +46,20 @@ io.on('connect', (socket) => {
     cb();
   });
 
-  socket.on('send-message', (message, cb) => {
+  socket.on('send-message', (message) => {
     const user = getUser(socket.id);
 
-    io.to(user.room).emit('message', {
-      user: user.name,
-      msg: message,
-    });
+    if (user && user.room) {
+      io.to(user.room).emit('message', {
+        user: user.name,
+        msg: message,
+        time: new Date(),
+      });
+    } else {
+      console.log('An error has occurred with sending message.');
+    }
 
-    cb();
+
   });
 
   socket.on('disconnect', () => {
@@ -61,7 +68,8 @@ io.on('connect', (socket) => {
     if(user) {
       io.to(user.room).emit('message', {
         user: 'system',
-        msg: `${user.name} has left the room.`
+        msg: `${user.name} has left the room.`,
+        time: new Date(),
       });
 
       io.to(user.room).emit('room-detail', {

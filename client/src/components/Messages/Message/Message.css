@@ -25,6 +25,11 @@
   align-items: center;
 }
 
+.msg-time {
+  font-size: 10px;
+  display: block;
+}
+
 /* Color & Text Transformation */
 .white {
   color: white;

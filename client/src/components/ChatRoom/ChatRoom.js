@@ -45,7 +45,7 @@ const ChatRoom = ({
       setUsers(users);
     });
 
-    socket.on('message', (message) => {
+    socket.on('message', (message, error) => {
       setMessages([...messages, message ]);
     });
 
@@ -62,8 +62,8 @@ const ChatRoom = ({
     if(message) {
       socket.emit(
         'send-message',
-        message,
-        () => setMessage(''));
+        message);
+      setMessage('');
     }
   };
 

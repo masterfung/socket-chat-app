@@ -1,0 +1,4 @@
+  console.error('oops an error', err);
+  process.exit(0);
+});
+
