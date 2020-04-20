@@ -24,11 +24,12 @@ const InputTextField = ({ setMessage, sendMessage, message, setImage }) => {
       if (info.file.status === 'done') {
         console.log(`${info.file.name} file uploaded successfully`);
         reader.addEventListener('load', (image, cb) => {
+
           console.log(image.target.result);
           setImage(image.target.result);
 
         }, false);
-        bits = new Blob([JSON.stringify(info.file)]);
+        bits = new Blob([JSON.stringify(info.file)], {type: "image/jpeg"});
         const dataFileUrl = reader.readAsDataURL(bits);
         // console.log('dataFileUrl', dataFileUrl);
         // setImage(dataFileUrl);

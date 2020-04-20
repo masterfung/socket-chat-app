@@ -62,6 +62,7 @@ io.on('connect', (socket) => {
 
   socket.on('image-upload', (image) => {
     const user = getUser(socket.id);
+    console.log('user from server', user);
 
     io.to(user.room).emit('image', image);
   });
@@ -77,7 +78,8 @@ io.on('connect', (socket) => {
       });
 
       io.to(user.room).emit('room-detail', {
-        room: user.room, users: getCurrentUsersInMatchingRoom(user.room)});
+        room: user.room,
+        users: getCurrentUsersInMatchingRoom(user.room)});
     }
   })
 });
